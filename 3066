@@ -1,0 +1,29 @@
+import bisect
+import sys
+input = sys.stdin.read
+
+def main():
+    data = input().split()
+    idx = 0
+    T = int(data[idx])
+    idx += 1
+    results = []
+
+    for _ in range(T):
+        N = int(data[idx])
+        idx += 1
+        ports = list(map(int, data[idx:idx+N]))
+        idx += N
+
+        lis = []
+        for num in ports:
+            pos = bisect.bisect_left(lis, num)
+            if pos == len(lis):
+                lis.append(num)
+            else:
+                lis[pos] = num
+        results.append(str(len(lis)))
+
+    print("\n".join(results))
+
+main()
