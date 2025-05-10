@@ -1,0 +1,19 @@
+from collections import Counter
+import sys
+input = sys.stdin.read
+
+def main():
+    data = input().split()
+    
+    N = int(data[0])
+    sang_cards = list(map(int, data[1:N+1]))
+    
+    M = int(data[N+1])
+    query_cards = list(map(int, data[N+2:N+2+M]))
+
+    counter = Counter(sang_cards)
+    
+    result = [str(counter[num]) for num in query_cards]
+    print(' '.join(result))
+
+main()
